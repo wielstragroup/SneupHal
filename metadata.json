@@ -1,0 +1,7 @@
+{
+  "name": "Sneuphal De Oude Bieb Stiens",
+  "description": "Een moderne en sfeervolle website voor tweedehandswinkel Sneuphal De Oude Bieb in Stiens. Ontdek unieke vintage vondsten, openingstijden en locatie.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}

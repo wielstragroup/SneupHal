@@ -1,0 +1,94 @@
+{
+  "entities": {
+    "gallery": {
+      "title": "Gallery Item",
+      "description": "An image item in the store gallery",
+      "type": "object",
+      "properties": {
+        "url": { "type": "string", "format": "uri" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "authorUid": { "type": "string" }
+      },
+      "required": ["url", "title", "createdAt", "authorUid"]
+    },
+    "blogs": {
+      "title": "Blog Post",
+      "description": "A blog post with rich text content",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "content": { "type": "string", "description": "HTML content from rich text editor" },
+        "imageUrl": { "type": "string", "format": "uri" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "authorUid": { "type": "string" }
+      },
+      "required": ["title", "content", "createdAt", "authorUid"]
+    },
+    "items": {
+      "title": "Sale Item",
+      "description": "An item for sale via WhatsApp",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "price": { "type": "string" },
+        "imageUrl": { "type": "string", "format": "uri" },
+        "isFeatured": { "type": "boolean" },
+        "isForSale": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["title", "imageUrl", "createdAt"]
+    },
+    "users": {
+      "title": "User",
+      "description": "User profile and roles",
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "format": "email"
+        },
+        "role": {
+          "type": "string",
+          "enum": ["admin", "user"]
+        }
+      },
+      "required": ["email", "role"]
+    },
+    "visitors": {
+      "title": "Visitor Sign-up",
+      "description": "Information for visitors who sign up for updates",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "email", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/gallery/{itemId}": {
+      "schema": "gallery",
+      "description": "Collection of gallery items"
+    },
+    "/blogs/{blogId}": {
+      "schema": "blogs",
+      "description": "Collection of blog posts"
+    },
+    "/items/{itemId}": {
+      "schema": "items",
+      "description": "Collection of items for sale or featured"
+    },
+    "/users/{userId}": {
+      "schema": "users",
+      "description": "User roles and profiles"
+    },
+    "/visitors/{visitorId}": {
+      "schema": "visitors",
+      "description": "Collection of visitors who signed up"
+    }
+  }
+}
