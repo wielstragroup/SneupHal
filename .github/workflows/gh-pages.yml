@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main # Start dit script elke keer als je de `main` branch bijwerkt.
+      - main # Draai workflow bij wijzigingen op de `main` branch.
 
 jobs:
   build-and-deploy:
@@ -18,11 +18,8 @@ jobs:
       with:
         node-version: '18'
 
-    - name: Clean up Node.js environment
-      run: |
-        rm -rf node_modules
-        rm package-lock.json
-        npm install
+    - name: Install dependencies
+      run: npm ci
 
     - name: Build project
       run: npm run build
@@ -31,4 +28,4 @@ jobs:
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./dist
+        publish_dir: ./dist # Map met de gebuilde bestanden
