@@ -18,8 +18,11 @@ jobs:
       with:
         node-version: '18'
 
-    - name: Install dependencies
-      run: npm install
+    - name: Clean up Node.js environment
+      run: |
+        rm -rf node_modules
+        rm package-lock.json
+        npm install
 
     - name: Build project
       run: npm run build
